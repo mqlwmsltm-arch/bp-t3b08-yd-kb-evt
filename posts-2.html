@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글 목록 (2/2) · t3b08-yd-kb-evt</title>
+  <meta name="description" content="t3b08-yd-kb-evt에 올라온 글 목록입니다.">
+  <link rel="canonical" href="https://yeouido-song-note.program-school.online/posts-2.html">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+ *, *::before, *::after {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ }
+ html {
+ font-size: 16px;
+ scroll-behavior: smooth;
+ }
+ body {
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+ line-height: 1.6;
+ color: #1d1d1f;
+ background-color: #ffffff;
+ -webkit-font-smoothing: antialiased;
+ }
+ .container {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 24px;
+ }
+ :root {
+ --spacing-xs: 8px;
+ --spacing-sm: 16px;
+ --spacing-md: 32px;
+ --spacing-lg: 64px;
+ --spacing-xl: 96px;
+ --color-primary: #1d1d1f;
+ --color-secondary: #86868b;
+ --color-accent: #0066cc;
+ --color-border: #d2d2d7;
+ --color-bg-light: #f5f5f7;
+ }
+ h1, h2, h3, h4 {
+ font-weight: 600;
+ line-height: 1.2;
+ letter-spacing: -0.015em;
+ }
+ h1 {
+ font-size: 2.5rem;
+ margin-bottom: var(--spacing-sm);
+ }
+ h2 {
+ font-size: 1.75rem;
+ margin-bottom: var(--spacing-sm);
+ margin-top: var(--spacing-lg);
+ }
+ h3 {
+ font-size: 1.25rem;
+ margin-bottom: var(--spacing-xs);
+ margin-top: var(--spacing-md);
+ }
+ p {
+ margin-bottom: var(--spacing-sm);
+ font-size: 1rem;
+ color: #1d1d1f;
+ }
+ a {
+ color: var(--color-accent);
+ text-decoration: none;
+ transition: opacity 0.2s ease;
+ }
+ a:hover {
+ opacity: 0.7;
+ }
+ nav {
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ background: rgba(255, 255, 255, 0.95);
+ backdrop-filter: blur(20px);
+ -webkit-backdrop-filter: blur(20px);
+ border-bottom: 1px solid var(--color-border);
+ z-index: 1000;
+ padding: 0 24px;
+ }
+ nav .container {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ height: 64px;
+ padding: 0;
+ }
+ nav .logo {
+ font-size: 1.25rem;
+ font-weight: 600;
+ color: var(--color-primary);
+ text-decoration: none;
+ }
+ nav .nav-links {
+ display: flex;
+ gap: var(--spacing-md);
+ list-style: none;
+ }
+ nav .nav-links a {
+ font-size: 0.9rem;
+ color: var(--color-secondary);
+ font-weight: 500;
+ transition: color 0.2s ease;
+ }
+ nav .nav-links a:hover,
+ nav .nav-links a.active {
+ color: var(--color-primary);
+ }
+ .hamburger-menu {
+ display: none;
+ flex-direction: column;
+ gap: 5px;
+ cursor: pointer;
+ background: none;
+ border: none;
+ padding: 8px;
+ }
+ .hamburger-menu span {
+ width: 24px;
+ height: 2px;
+ background: var(--color-primary);
+ transition: all 0.3s ease;
+ }
+ @media (max-width: 768px) {
+ .container {
+ padding: 0 16px;
+ }
+ h1 {
+ font-size: 1.75rem;
+ }
+ h2 {
+ font-size: 1.35rem;
+ margin-top: var(--spacing-md);
+ }
+ h3 {
+ font-size: 1.1rem;
+ }
+ nav .nav-links {
+ display: none;
+ position: absolute;
+ top: 64px;
+ left: 0;
+ right: 0;
+ background: rgba(255, 255, 255, 0.98);
+ backdrop-filter: blur(20px);
+ flex-direction: column;
+ padding: var(--spacing-sm) 24px;
+ border-bottom: 1px solid var(--color-border);
+ gap: var(--spacing-sm);
+ }
+ nav .nav-links.open {
+ display: flex;
+ }
+ .hamburger-menu {
+ display: flex;
+ }
+ .tel-link {
+ display: inline-block;
+ font-weight: 600;
+ }
+ }
+ .hero-section {
+ padding-top: 128px;
+ padding-bottom: var(--spacing-lg);
+ background: var(--color-bg-light);
+ text-align: center;
+ }
+ .hero-section h1 {
+ max-width: 800px;
+ margin: 0 auto var(--spacing-sm);
+ }
+ .hero-section p {
+ max-width: 600px;
+ margin: 0 auto;
+ color: var(--color-secondary);
+ font-size: 1.1rem;
+ }
+ .info-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: var(--spacing-md);
+ margin-top: var(--spacing-md);
+ margin-bottom: var(--spacing-lg);
+ }
+ .info-card {
+ background: var(--color-bg-light);
+ border-radius: 12px;
+ padding: var(--spacing-md);
+ border: 1px solid var(--color-border);
+ }
+ .info-card h3 {
+ margin-top: 0;
+ margin-bottom: var(--spacing-xs);
+ }
+ .info-card p {
+ margin-bottom: 0;
+ color: var(--color-secondary);
+ font-size: 0.95rem;
+ }
+ .feature-list {
+ list-style: none;
+ padding: 0;
+ margin: var(--spacing-sm) 0;
+ }
+ .feature-list li {
+ padding: 8px 0;
+ border-bottom: 1px solid var(--color-border);
+ font-size: 0.95rem;
+ display: flex;
+ align-items: flex-start;
+ gap: 8px;
+ }
+ .feature-list li::before {
+ content: "▸";
+ color: var(--color-accent);
+ font-weight: 600;
+ }
+ .faq-section {
+ margin-top: var(--spacing-lg);
+ margin-bottom: var(--spacing-xl);
+ }
+ .faq-item {
+ border-bottom: 1px solid var(--color-border);
+ padding: var(--spacing-sm) 0;
+ }
+ .faq-question {
+ font-weight: 600;
+ font-size: 1.05rem;
+ margin-bottom: 6px;
+ color: var(--color-primary);
+ }
+ .faq-answer {
+ color: var(--color-secondary);
+ font-size: 0.95rem;
+ line-height: 1.6;
+ }
+ .cta-section {
+ background: var(--color-primary);
+ color: #ffffff;
+ padding: var(--spacing-lg) 0;
+ text-align: center;
+ margin-top: var(--spacing-lg);
+ }
+ .cta-section h2 {
+ color: #ffffff;
+ margin-top: 0;
+ }
+ .cta-section p {
+ color: #a1a1a6;
+ max-width: 500px;
+ margin: 0 auto var(--spacing-md);
+ }
+ .cta-button {
+ display: inline-block;
+ background: #ffffff;
+ color: var(--color-primary);
+ padding: 12px 32px;
+ border-radius: 8px;
+ font-weight: 600;
+ font-size: 1rem;
+ transition: opacity 0.2s ease;
+ text-decoration: none;
+ }
+ .cta-button:hover {
+ opacity: 0.85;
+ color: var(--color-primary);
+ }
+ .contact-block {
+ background: var(--color-bg-light);
+ border-radius: 12px;
+ padding: var(--spacing-md);
+ text-align: center;
+ margin: var(--spacing-lg) 0;
+ border: 1px solid var(--color-border);
+ }
+ .contact-block .tel-link {
+ font-size: 1.5rem;
+ font-weight: 700;
+ color: var(--color-primary);
+ text-decoration: none;
+ }
+ .contact-block .tel-link:hover {
+ color: var(--color-accent);
+ }
+ footer {
+ background: var(--color-bg-light);
+ border-top: 1px solid var(--color-border);
+ padding: var(--spacing-md) 0;
+ text-align: center;
+ color: var(--color-secondary);
+ font-size: 0.85rem;
+ }
+ @media (max-width: 768px) {
+ .info-grid {
+ grid-template-columns: 1fr;
+ gap: var(--spacing-sm);
+ }
+ .hero-section {
+ padding-top: 96px;
+ padding-bottom: var(--spacing-md);
+ }
+ .contact-block .tel-link {
+ font-size: 1.25rem;
+ }
+ }
+ </style>
+  <meta property="og:title" content="글 목록 (2/2) · t3b08-yd-kb-evt">
+  <meta property="og:description" content="t3b08-yd-kb-evt에 올라온 글 목록입니다.">
+  <meta property="og:url" content="https://yeouido-song-note.program-school.online/posts-2.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+</head>
+<body>
+  <div class="container">
+    
+    <main>
+      <h1>글 목록</h1>
+      <p>전체 25개 · 2/2 페이지</p>
+      <ul class="post-list">
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-1.html">여의도 노래방 이벤트 안내</a>
+        <p class="post-item__summary">여의도 지역은 직장인과 주민들이 밀집한 도심 내 위치로, 다양한 문화 시설과 함께 오락 및 모임 공간이 널리 분포되어 있습니다. 특히 노래방 업계에서는 계절별 또는 기념일을 맞이하여 정기적인 이벤트</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-2.html">여의도 노래방 이벤트 정보</a>
+        <p class="post-item__summary">여의도 지역은 직장인들과 학생들로 붐비는 도심 속 공간으로, 퇴근 후나 여가 시간에 즐길 수 있는 다양한 문화 시설이 밀집해 있습니다. 그중 노래방은 동료들과의 회식이나 친구들이 모여 즐거운 시간을</p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/normal-3.html">여의도 노래방 이벤트 정보 안내</a>
+        <p class="post-item__summary">여의도 지역에서 진행되는 노래방 이벤트는 다양한 형태의 프로모션으로 마련되는 경우가 많습니다. 고객들은 특별 할인, 시간대별 혜택, 혹은 단체 예약 관련 혜택을 확인할 수 있으며, 이러한 이벤트는 </p>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/review-002-x0wolo.html">3 개월, 여의도 노래방 시스템의 미사용 코드 해독기</a>
+      </li>
+      <li class="post-item">
+        <a class="post-item__link" href="posts/t3link-001-1lenvfz.html">여의도 노래방 이벤트, 방문 전 조건부터 확인하기</a>
+        <p class="post-item__summary">여의도 노래방 이벤트를 검색하는 경우 대부분 특정 할인 금액보다, 이벤트가 실제로 언제 적용되고 어떤 조건이 붙는지를 궁금해한다. 이벤트 내용은 매장과 시기에 따라 달라지므로, 이 페이지는 방문 전</p>
+      </li>
+      </ul>
+    <nav class="pager">
+      <a class="pager__link" href="posts.html">1</a>
+      <span class="pager__current">2</span>
+    </nav>
+    </main>
+  </div>
+</body>
+</html>
